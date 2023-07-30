@@ -16,7 +16,6 @@ public interface Courserepository extends MongoRepository<Course, ObjectId> {
 //			Course findByCourseName(String courseName);
 	Course findByAuthorId(String AuthorId);
 
-
 //			List<Course> findAllByOrderByGpaDesc();
 	Optional<Course> findByCourseName(String courseName);
 

@@ -18,13 +18,13 @@ import com.example.service.CourseserviceImpl;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/course")
+@RequestMapping("course")
 public class Coursecontroller {
 
 	@Autowired
 	private CourseserviceImpl courseservice;
 
-	@PostMapping(value = "/add")
+	@PostMapping(value = "add")
 	public Course saveOrUpdateCourse(@RequestBody Course course) {
 		System.out.println(course);
 		return courseservice.addCourse(course);
@@ -35,13 +35,13 @@ public class Coursecontroller {
 		return courseservice.addAllCourse(courses);
 	}
 
-	@GetMapping(value = "/show")
+	@GetMapping(value = "show")
 	public Page<Course> show(@RequestParam(defaultValue = "0")int page,@RequestParam(defaultValue = "3")int size) {
 		Pageable paging = PageRequest.of(page, size);
 		return courseservice.findAll(paging);
 	}
 
-	@GetMapping("/specificcourse/{courseName}")
+	@GetMapping("specificcourse/{courseName}")
 	public ResponseEntity<Course> findByCourseName(@PathVariable("courseName") String courseName) {
 		Optional<Course> courseDataById = courseservice.findByCourseName(courseName);
 		
@@ -53,7 +53,7 @@ public class Coursecontroller {
 	}
 
 
-	@PutMapping("/Update/{courseId}")
+	@PutMapping("Update/{courseId}")
 	public ResponseEntity<Course> updateCourse(@PathVariable("courseId") ObjectId courseId, @RequestBody Course course){
 
 
